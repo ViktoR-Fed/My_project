@@ -1,7 +1,7 @@
-from src.masks import get_mask_account, get_mask_card_number, Union
+from src.masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(account_card: Union[str, str]) -> str:
+def mask_account_card(account_card: str) -> str:
     """Функция для обработки информации о картах и и счетах"""
     # Записывем информацию о карте в новый список
     info_list = account_card.split()
@@ -31,3 +31,16 @@ def mask_account_card(account_card: Union[str, str]) -> str:
         masked_number = get_mask_card_number((last_card))
 
     return f"{last_name}{masked_number}"
+
+
+def get_date(date: str) -> str:
+    """Функция для обработки полученной даты в нужном формате"""
+    split_date = date.split("T")
+    new_date = split_date[0]
+    new_date_str = "".join(new_date)
+    format_date = new_date_str.replace("-", ".")
+    day = format_date[-2:]
+    month = format_date[5:7]
+    year = format_date[0:4]
+
+    return f"{day}.{month}.{year}"
