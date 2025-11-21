@@ -63,22 +63,22 @@ canceled_operations = filter_by_state(data, 'CANCELED')
 
 **Параметры:**
 
-#### list_dict: Список словарей с операциями
-#### ascending: Порядок сортировки(True (по умолчанию) - по убыванию, False - по возрастанию(сначала самые старые))
+#### showing: Список словарей с операциями
+#### is_ascending: Порядок сортировки(True (по умолчанию) - по убыванию, False - по возрастанию(сначала самые старые))
 
 Пример использования:
 ```
-list_dict = [
+showing = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}
 ]
 
 # Сортировка по убыванию (сначала новые)
-sorted_desc = sort_by_date(list_dict)
+sorted_desc = sort_by_date(showing)
 # [{'id': 41428829, ...}, {'id': 939719570, ...}]
 
 # Сортировка по возрастанию (сначала старые)
-sorted_asc = sort_by_date(list_dict, reverse=False)
+sorted_asc = sort_by_date(showing,False)
 # [{'id': 939719570, ...}, {'id': 41428829, ...}]
 ```
 
