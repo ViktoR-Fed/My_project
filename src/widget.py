@@ -4,6 +4,11 @@ from src.masks import get_mask_account, get_mask_card_number
 def mask_account_card(account_card: str) -> str:
     """Функция для обработки информации о картах и и счетах"""
     # Записывем информацию о карте в новый список
+    mask_card_input_type = type(account_card)
+    if mask_card_input_type != str:
+        return "Введен неверный тип данных"
+    elif len(account_card) < 1 or 1 < len(account_card) < 16:
+        return "Данные введены не корректно"
     info_list = account_card.split()
     # Делим название карты/счета и номер
     name_card = []
@@ -35,6 +40,11 @@ def mask_account_card(account_card: str) -> str:
 
 def get_date(date: str) -> str:
     """Функция для обработки полученной даты в нужном формате"""
+    get_date_input_type = type(date)
+    if get_date_input_type != str:
+        return "Введен неверный тип данных"
+    elif len(date) < 26 or len(date) > 26:
+        return "Ошибка ввода"
     split_date = date.split("T")
     new_date = split_date[0]
     new_date_str = "".join(new_date)
