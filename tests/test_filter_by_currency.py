@@ -1,6 +1,4 @@
-from typing import Any, Dict, List
-
-import pytest
+from typing import Any
 
 from src.generators import filter_by_currency
 from tests.conftest import transaction_list_for_filter
