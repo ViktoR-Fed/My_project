@@ -38,13 +38,14 @@ def mask_account_card(account_card: str) -> str:
     return f"{last_name}{masked_number}"
 
 
-def get_date(date: str) -> str:
+def get_date(date: str | int) -> str:
     """Функция для обработки полученной даты в нужном формате"""
     get_date_input_type = type(date)
     if get_date_input_type != str:
         return "Введен неверный тип данных"
     elif len(date) < 26 or len(date) > 26:
         return "Ошибка ввода"
+    date = str(date)
     split_date = date.split("T")
     new_date = split_date[0]
     new_date_str = "".join(new_date)
