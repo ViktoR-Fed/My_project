@@ -203,7 +203,7 @@ add_numbers(1,2)
 
 Пример использования:
 ```
-result = currency_conversion([{
+result = currency_conversion({
     "id": 41428829,
     "state": "EXECUTED",
     "date": "2019-07-03T18:35:29.512364",
@@ -217,7 +217,7 @@ result = currency_conversion([{
     "description": "Перевод организации",
     "from": "MasterCard 7158300734726758",
     "to": "Счет 35383033474447895560"
-  }])
+  })
 print(result)
 
 >>> 661683.210098

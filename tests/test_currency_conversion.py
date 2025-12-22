@@ -12,7 +12,7 @@ API_KEY = os.getenv("API_KEY")
 
 
 def test_currency_conversion_rub(for_currency_conversion) -> None:
-    assert currency_conversion(for_currency_conversion) == 31957.58
+    assert currency_conversion(for_currency_conversion) == 91121.62
 
 
 def test_currency_conversion_usd() -> None:
@@ -25,17 +25,15 @@ def test_currency_conversion_usd() -> None:
         mock_get.return_value = mock_response
 
         # Подготовка тестовых данных
-        test_transaction = [
-            {
-                "id": 41428829,
-                "state": "EXECUTED",
-                "date": "2019-07-03T18:35:29.512364",
-                "operationAmount": {"amount": "1", "currency": {"name": "Доллар США", "code": "USD"}},
-                "description": "Перевод организации",
-                "from": "MasterCard 7158300734726758",
-                "to": "Счет 35383033474447995560",
-            }
-        ]
+        test_transaction = {
+            "id": 41428829,
+            "state": "EXECUTED",
+            "date": "2019-07-03T18:35:29.512364",
+            "operationAmount": {"amount": "1", "currency": {"name": "Доллар США", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "MasterCard 7158300734726758",
+            "to": "Счет 35383033474447995560",
+        }
 
         # Вызов функции
         result = currency_conversion(test_transaction)
@@ -58,17 +56,15 @@ def test_currency_conversion_eur() -> None:
         mock_get.return_value = mock_response
 
         # Подготовка тестовых данных
-        test_transaction = [
-            {
-                "id": 41428830,
-                "state": "EXECUTED",
-                "date": "2019-07-04T18:35:29.512364",
-                "operationAmount": {"amount": "50", "currency": {"name": "Евро", "code": "EUR"}},
-                "description": "Перевод организации",
-                "from": "Visa 4150393755080000",
-                "to": "Счет 35383033474447995560",
-            }
-        ]
+        test_transaction = {
+            "id": 41428830,
+            "state": "EXECUTED",
+            "date": "2019-07-04T18:35:29.512364",
+            "operationAmount": {"amount": "50", "currency": {"name": "Евро", "code": "EUR"}},
+            "description": "Перевод организации",
+            "from": "Visa 4150393755080000",
+            "to": "Счет 35383033474447995560",
+        }
 
         # Вызов функции
         result = currency_conversion(test_transaction)
@@ -89,17 +85,15 @@ def test_currency_conversion_api_error() -> None:
         mock_response.status_code = 500  # Ошибка сервера
         mock_get.return_value = mock_response
 
-        test_transaction = [
-            {
-                "id": 41428831,
-                "state": "EXECUTED",
-                "date": "2019-07-05T18:35:29.512364",
-                "operationAmount": {"amount": "100", "currency": {"name": "Доллар США", "code": "USD"}},
-                "description": "Перевод организации",
-                "from": "MasterCard 7158300734726758",
-                "to": "Счет 35383033474447995560",
-            }
-        ]
+        test_transaction = {
+            "id": 41428831,
+            "state": "EXECUTED",
+            "date": "2019-07-05T18:35:29.512364",
+            "operationAmount": {"amount": "100", "currency": {"name": "Доллар США", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "MasterCard 7158300734726758",
+            "to": "Счет 35383033474447995560",
+        }
 
         # Вызов функции (вернёт 0.0 из-за ошибки)
         result = currency_conversion(test_transaction)
