@@ -31,4 +31,3 @@ def log(filename=None):
         return wrapper
 
     return my_decorator
-
