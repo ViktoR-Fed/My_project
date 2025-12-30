@@ -19,7 +19,7 @@ def filter_by_currency(transaction_list: List[Dict[str, Any]], currency_type: st
 
 
 def transaction_descriptions(transactions: List[Dict[str, Any]] | Any) -> Generator:
-    """Функция - генератор,который принимает список словарей с транзакциями
+    """Функция - генератор, который принимает список словарей с транзакциями
     и возвращает описание каждой операции по очереди"""
     transactions_type = type(transactions)
     if transactions_type == list:

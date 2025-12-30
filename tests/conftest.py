@@ -112,3 +112,17 @@ def transactions_list_none_type_key() -> List[Dict[str, Any]]:
         },
     ]
     return result
+
+
+@pytest.fixture
+def for_currency_conversion() -> Dict:
+    result = {
+        "id": 121646999,
+        "state": "CANCELED",
+        "date": "2018-06-08T16:14:59.936274",
+        "operationAmount": {"amount": "91121.62", "currency": {"name": "руб.", "code": "RUB"}},
+        "description": "Перевод организации",
+        "from": "Maestro 7552745726849311",
+        "to": "Счет 34799481846914116850",
+    }
+    return result
